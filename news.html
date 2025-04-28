@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Construction</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #1c1c1e;
+      color: #fff;
+      margin: 0;       /* remove default margin */
+      padding: 0;      /* let header span full width */
+    }
+    h1 { margin-top: 0; }
+    ul { padding-left: 1.2rem; }
+
+    /* include padding in width calculations to prevent overflow */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header layout */
+    header {
+      background: #3a3a3c;
+      padding: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Logo sizing */
+    .logo {
+      max-height: 125px;
+      width: auto;
+    }
+
+    .page-title {
+      position: absolute;
+      left: 48%;
+      transform: translateX(-50%);
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    /* Submit button sizing */
+    .accent-button {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 100px;
+      cursor: pointer;
+      width: auto;
+    }
+
+    .page-content {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .news-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #3a3a3c;
+      padding: 1rem;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="assets/the-sammamish-bulletin-logo.png" alt="Logo" class="logo"/>
+    </a>
+    <h1 class="page-title">Current&nbsp;News</h1>
+    <a href="https://forms.gle/6s9GrFsPExvqpobU8"
+       target="_blank"
+       rel="noopener noreferrer">
+      <img src="assets/exclamation-button.png"
+           alt="Submit Something"
+           class="accent-button"/>
+    </a>
+  </header>
+
+  <div class="page-content">
+  <div class="news-cards">
+    <div class="card">
+      <h2>Mayor's State of the City Address</h2>
+      <p>On April 8, Mayor Karen Howe delivered the annual State of the City address, highlighting infrastructure projects and community initiatives.</p>
+    </div>
+    <div class="card">
+      <h2>Traffic Updates</h2>
+      <p>The Louis Thompson Tightline Project is causing road closures in the Tamarack Neighborhood from April 16–18, affecting East Main Street and 210th Avenue NE.</p>
+    </div>
+    <div class="card">
+      <h2>Seahawks 2025 NFL Draft</h2>
+      <p>The Seahawks selected 11 players in the 2025 NFL Draft, led by offensive lineman Grey Zabel from North Dakota State, the highest-drafted FCS offensive lineman ever.</p>
+    </div>
+    <div class="card">
+      <h2>Undrafted Free Agents</h2>
+      <p>Post-draft, Seattle signed undrafted OL AJ Gillie (Louisiana) and CB Isaiah Hamilton (Ole Miss) to bolster the roster.</p>
+    </div>
+    <div class="card">
+      <h2>Police Hiring Surge</h2>
+      <p>Seattle hired 60 new police officers in 2025—a 500% increase from the same period in 2024—supporting Mayor Harrell's public safety initiative.</p>
+    </div>
+    <div class="card">
+      <h2>Laser Strike Incidents</h2>
+      <p>The FBI is investigating over 100 laser-pointer incidents in 2025 targeting aircraft near Seattle–Tacoma and Spokane airports, posing serious safety hazards.</p>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
