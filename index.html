@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Sammamish Bulletin</title>
+  <style>
+    :root {
+      --bg-primary: #1c1c1e;
+      --bg-secondary: #3a3a3c;
+      --text-primary: #ffffff;
+      --text-secondary: #8e8e93;
+      --accent: #bfbfbf;
+      --teal-glow: #bfbfbf;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: sans-serif;
+      overflow-x: hidden;
+    }
+
+    /********************
+     *   GLOBAL LAYOUT  *
+     ********************/
+    .layout {
+      display: grid;
+      overflow-y: auto;
+      grid-template-rows: auto auto 1fr;
+      min-height: 100vh;
+      width: 100%;
+    }
+    header {
+      background: var(--bg-secondary);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .logo { max-height: 125px; margin-left: -50px; width: auto; }
+    .accent-button {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 100px;
+      cursor: pointer;
+      width: auto;
+    }
+
+    /********************
+     *     CAROUSEL     *
+     ********************/
+    .carousel {
+      width: 90%;
+      max-width: 1500px;
+      aspect-ratio: 16/6;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      margin: 0.5rem auto 1rem auto;
+      box-shadow: none;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    .carousel:hover { box-shadow: 0 6px 16px var(--teal-glow); }
+    .carousel img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .carousel img.active { display: block; }
+    .carousel-nav {
+      position: absolute;
+      bottom: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .carousel-nav span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+      cursor: pointer;
+    }
+    .carousel-nav span.active { background: var(--accent); }
+
+    /********************
+     *   LANDING CARDS  *
+     ********************/
+    .grid {
+      display: grid;
+      gap: 1rem;
+      padding: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      align-content: start;
+    }
+    a.card {
+      background: var(--bg-secondary);
+      padding: 1rem;
+      border-radius: 8px;
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease;
+      min-height: 200px;
+    }
+    a.card h2 { font-size: 1.6rem; }
+    a.card:hover { box-shadow: 0 4px 12px var(--teal-glow); }
+
+    /********************
+     *  EVENTS SECTION  *
+     ********************/
+    section { width: 100%; }
+    .section-wrapper { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-wrapper h1 { margin-top: 0; }
+
+    /* Table copied from events.html */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      border: 1px solid #444;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    thead { background-color: var(--bg-secondary); }
+    thead th { padding: 0.75rem; text-align: left; font-weight: bold; }
+    tbody tr { border-bottom: 1px solid #444; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td { padding: 0.75rem; }
+    tbody tr:nth-child(even) { background-color: #242426; }
+
+    /********************
+     *   NEWS SECTION   *
+     ********************/
+    .news-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .news-cards .card {
+      background: var(--bg-secondary);
+      padding: 1rem;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+      .layout { grid-template-rows: auto auto auto; height: auto; }
+      .carousel { width: 100%; }
+    }
+  </style>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- ********** HEADER ********** -->
+    <header>
+      <img src="assets/the-sammamish-bulletin-logo.png" alt="Logo" class="logo"/>
+      <a href="https://forms.gle/6s9GrFsPExvqpobU8" target="_blank" rel="noopener noreferrer">
+        <img src="assets/exclamation-button.png" alt="Submit Something" class="accent-button"/>
+      </a>
+    </header>
+
+    <!-- ********** CAROUSEL ********** -->
+    <div class="carousel">
+      <img src="assets/carousel1.png" class="active" alt="Slide1" />
+      <img src="assets/carousel1.png" alt="Slide2" />
+      <img src="assets/carousel1.png" alt="Slide3" />
+      <div class="carousel-nav">
+        <span class="active" data-index="0"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+      </div>
+    </div>
+
+    <!-- ********** EVENTS SECTION ********** -->
+    <section id="events">
+      <div class="section-wrapper">
+        <h1>Upcoming Events</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Time/Date</th>
+              <th>Location</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- May & June events -->
+            <tr>
+              <td>AAPI Event</td>
+              <td>5 PM&nbsp;|&nbsp;5/10</td>
+              <td>301 Rainier Blvd S, Issaquah, WA 98027</td>
+              <td>I'm djing this 😭</td>
+            </tr>
+            <tr>
+              <td>Skyline Graduation</td>
+              <td>7:30 PM&nbsp;|&nbsp;6/12</td>
+              <td>T-Mobile Park</td>
+              <td>old ppl</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ********** NEWS SECTION ********** -->
+    <section id="news">
+      <div class="section-wrapper">
+        <h1>Current News</h1>
+        <div class="news-cards">
+          <div class="card">
+            <h2>Mayor's State of the City Address</h2>
+            <p>On April 8, Mayor Karen Howe delivered the annual State of the City address, highlighting infrastructure projects and community initiatives.</p>
+          </div>
+          <div class="card">
+            <h2>Traffic Updates</h2>
+            <p>The Louis Thompson Tightline Project is causing road closures in the Tamarack Neighborhood from April 16–18, affecting East Main Street and 210th Avenue NE.</p>
+          </div>
+          <div class="card">
+            <h2>Seahawks 2025 NFL Draft</h2>
+            <p>The Seahawks selected 11 players in the 2025 NFL Draft, led by offensive lineman Grey Zabel from North Dakota State, the highest-drafted FCS offensive lineman ever.</p>
+          </div>
+          <div class="card">
+            <h2>Undrafted Free Agents</h2>
+            <p>Post-draft, Seattle signed undrafted OL AJ Gillie (Louisiana) and CB Isaiah Hamilton (Ole Miss) to bolster the roster.</p>
+          </div>
+          <div class="card">
+            <h2>Police Hiring Surge</h2>
+            <p>Seattle hired 60 new police officers in 2025—a 500% increase from the same period in 2024—supporting Mayor Harrell's public safety initiative.</p>
+          </div>
+          <div class="card">
+            <h2>Laser Strike Incidents</h2>
+            <p>The FBI is investigating over 100 laser-pointer incidents in 2025 targeting aircraft near Seattle–Tacoma and Spokane airports, posing serious safety hazards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ********** ABOUT SECTION ********** -->
+    <section id="about">
+      <div class="section-wrapper">
+        <h1>About Us</h1>
+        <ul>
+          <li>Group project at Skyline High School</li>
+          <li>Created and maintained by Skylar Enns, Contact: skytheredhead@gmail.com</li>
+          <li>v0.0.4</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- ********** JS: CAROUSEL ********** -->
+  <script>
+    (function(){
+      const slides = document.querySelectorAll('.carousel img');
+      const dots   = document.querySelectorAll('.carousel-nav span');
+      let current = 0;
+      function show(idx){
+        slides.forEach((s,i)=>s.classList.toggle('active', i===idx));
+        dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
+        current = idx;
+      }
+      dots.forEach(dot => dot.addEventListener('click', () => show(+dot.dataset.index)));
+      setInterval(() => show((current + 1) % slides.length), 3000);
+    })();
+  </script>
+</body>
+</html>
